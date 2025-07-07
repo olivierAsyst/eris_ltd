@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galerie images{% endblock %}
+
+{% block body %}
+<section class="py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h1 class="text-2xl text-green-800">Nos images liés a nos activites</h1>
+        <div class="flex flex-wrap gap-2 mt-5">
+        {% for image in images %}
+            <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
+            <a href="#">
+                <img class="rounded-lg" src="{{ vich_uploader_asset(image, 'image') }}" alt="Galerie Image ERIS SARL">
+            </a>
+            <figcaption class="absolute px-4 text-lg text-white bottom-6">
+                <h2 class="text-xl font-semibold text-white">{{ image.lieu }}</h2>
+                <p>{{ image.description }}</p>
+            </figcaption>
+            </figure>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}ImageGalery index{% endblock %}
+
+{% block in_body %}
+<section class="items-center justify-between mb-6">
+    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Les images</h1>
+    <div class="flex flex-wrap  items-center space-x-2">
+    {% for image in image_galeries %}
+        <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{ vich_uploader_asset(image, 'image') }}" alt="">
+            <div class="flex flex-col justify-between p-4 leading-normal">
+                <div class="flex">
+                    <a href="{{ path('admin.galery.edit', {'id': image.id}) }}" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800 w-auto">Modifier</a>
+                    <a href="{{ path('admin.galery.show', {'id': image.id}) }}" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800 w-auto">Voir</a>
+                </div>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ image.lieu }}</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ image.description }}</p>
+            </div>
+        </a>
+    {% endfor %}
+    </div>
+</section>
+
+    <a href="{{ path('admin.galery.create') }}">Ajouter un nouveau</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Image de {{ image_galery.lieu }}{% endblock %}
+
+{% block in_body %}
+{# <section class="items-center justify-between mb-6">
+    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Image de {{ image_galery.lieu }}</h1>
+    <div class="flex flex-wrap  items-center space-x-2">
+        <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{ vich_uploader_asset(image_galery, 'image') }}" alt="">
+            <div class="flex flex-col justify-between p-4 leading-normal">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ image_galery.lieu }}</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ image_galery.description }}</p>
+            </div>
+        </a>
+    </div>
+</section> #}
+
+
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="rounded-t-lg" src="{{ vich_uploader_asset(image_galery, 'image') }}" alt="" />
+    </a>
+    <div class="p-5">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Image de {{ image_galery.lieu }}</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ image_galery.description }}</p>
+        <div class="flex">
+            {{ include('admin/image_galery/_delete_form.html.twig') }}
+            <a class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800 w-auto" href="{{ path('admin.galery.edit', {'id': image_galery.id}) }}">Modifier</a>
+        </div>
+    </div>
+</div>
+
+<a class="text-green-800" href="{{ path('admin.galery.index') }}">Retour a la liste</a>
+    
+{% endblock %}
