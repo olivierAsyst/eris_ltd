@@ -3,7 +3,9 @@
 {% block title %}Admin | Ajouter un service{% endblock %}
 
 {% block in_body %}
-        <div class="w-full max-w-3xl h-full md:h-auto">
+<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+    <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+        <div class="w-full mx-auto max-w-3xl h-full md:h-auto">
         <!-- Modal content -->
         <div class="bg-white rounded-lg sm:p-5">
             <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
@@ -29,4 +31,6 @@
             {{ form_end(form) }}
         </div>
     </div>
+</div>
+</section>
 {% endblock %}

@@ -67,6 +67,14 @@ final class ServicesController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/delete', name: 'delete', methods: ['DELETE'], requirements: ['id'=> Requirement::DIGITS])]
+    public function delete(Services $service, EntityManagerInterface $em)
+    {
+        $em->remove($service);
+        $em->flush();
+        $this->addFlash('success','Le Service a été bien supprimé');
+        return $this->redirectToRoute('admin.service.index');
+    }
     public function makeSlug($name): string
     {
         return str_replace(' ', '-', strtolower($name));
