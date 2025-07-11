@@ -20,7 +20,7 @@ class ImageGalery
     #[ORM\Column(length: 255)]
     private ?string $lieu = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageUrl = null;
 
     #[Vich\UploadableField(mapping: 'galerie', fileNameProperty: 'imageUrl')]

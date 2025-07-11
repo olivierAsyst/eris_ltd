@@ -3,11 +3,12 @@
 {% block title %}New ImageGalery{% endblock %}
 
 {% block in_body %}
-        <div class="w-full max-w-3xl h-full md:h-auto">
+<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+    <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
         <!-- Modal content -->
         <div class="bg-white rounded-lg sm:p-5">
             <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Ajout de membre</h3>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Ajout d'un image</h3>
             </div>
             <!-- Modal body -->
             {{ form_start(form) }}
@@ -53,4 +54,6 @@
     {# {{ include('image_galery/_form.html.twig') }} #}
 
     <a class="text-green-800" href="{{ path('admin.galery.index') }}">Voir la liste</a>
+</div>
+</section>
 {% endblock %}

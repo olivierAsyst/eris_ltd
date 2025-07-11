@@ -2,21 +2,18 @@
 
 namespace App\Form;
 
-use App\Entity\ImageGalery;
+use App\Entity\Partner;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Image;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class ImageGaleryType extends AbstractType
+class PartnerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('lieu')
-            ->add('description')
+            ->add('name')
             ->add('image', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => false, // pas de case à cocher pour supprimer
@@ -25,18 +22,19 @@ class ImageGaleryType extends AbstractType
                 'label' => 'Image (JPG, PNG)',
                 'constraints' => [
                     new \Symfony\Component\Validator\Constraints\Image([
-                        'maxSize' => '10M',
+                        'maxSize' => '5M',
                         'mimeTypes' => ['image/jpeg', 'image/png', 'image/webp'],
                     ])
                 ]
             ]);
+        ;
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => ImageGalery::class,
+            'data_class' => Partner::class,
         ]);
     }
 }

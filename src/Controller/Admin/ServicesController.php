@@ -67,13 +67,23 @@ final class ServicesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/delete', name: 'delete', methods: ['DELETE'], requirements: ['id'=> Requirement::DIGITS])]
-    public function delete(Services $service, EntityManagerInterface $em)
+    #[Route('/{id}', name: 'delete', methods: ['POST'])]
+    public function delete(Request $request, Services $service, EntityManagerInterface $entityManager): Response
     {
-        $em->remove($service);
-        $em->flush();
-        $this->addFlash('success','Le Service a été bien supprimé');
-        return $this->redirectToRoute('admin.service.index');
+        if ($this->isCsrfTokenValid('delete'.$service->getId(), $request->getPayload()->getString('_token'))) {
+            $entityManager->remove($service);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('admin.services.index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}', name: 'show', methods: ['GET'])]
+    public function show(Services $service): Response
+    {
+        return $this->render('admin/services/show.html.twig', [
+            'service' => $service,
+        ]);
     }
     public function makeSlug($name): string
     {

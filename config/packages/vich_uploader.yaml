@@ -11,3 +11,14 @@ vich_uploader:
            uri_prefix: /images/galerie
            upload_destination: '%kernel.project_dir%/public/images/galerie'
            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+           inject_on_load: false
+           delete_on_update: true
+           delete_on_remove: true
+       
+       partner:
+           uri_prefix: /images/partner
+           upload_destination: '%kernel.project_dir%/public/images/partner'
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+           inject_on_load: false
+           delete_on_update: true
+           delete_on_remove: true

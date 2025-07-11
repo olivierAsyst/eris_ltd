@@ -35,7 +35,7 @@ final class MemberController extends AbstractController
             $entityManager->persist($member);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_member_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin.member.index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/member/new.html.twig', [
@@ -61,7 +61,7 @@ final class MemberController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_member_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin.member.index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/member/edit.html.twig', [
@@ -78,6 +78,6 @@ final class MemberController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_member_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin.member.index', [], Response::HTTP_SEE_OTHER);
     }
 }

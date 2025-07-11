@@ -51,25 +51,4 @@
         </div>
     </div>
 </section>
-{# 
-        <tbody>
-        {% for member in members %}
-            <tr>
-                <td>{{ member.id }}</td>
-                <td>{{ member.fullName }}</td>
-                <td>{{ member.function }}</td>
-                <td>
-                    <a href="{{ path('app_member_show', {'id': member.id}) }}">show</a>
-                    <a href="{{ path('app_member_edit', {'id': member.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('admin.member.create') }}">Ajouter</a> #}
 {% endblock %}

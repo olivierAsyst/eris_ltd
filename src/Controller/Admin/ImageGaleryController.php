@@ -66,9 +66,26 @@ final class ImageGaleryController extends AbstractController
 
         return $this->render('admin/image_galery/edit.html.twig', [
             'image_galery' => $imageGalery,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
+    // #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
+    // public function edit(Request $request, ImageGalery $imageGalery, EntityManagerInterface $entityManager): Response
+    // {
+    //     $form = $this->createForm(ImageGaleryType::class, $imageGalery);
+    //     $form->handleRequest($request);
+
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $entityManager->flush();
+
+    //         return $this->redirectToRoute('admin.galery.index', [], Response::HTTP_SEE_OTHER);
+    //     }
+
+    //     return $this->render('admin/image_galery/edit.html.twig', [
+    //         'image_galery' => $imageGalery,
+    //         'form' => $form,
+    //     ]);
+    // }
 
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, ImageGalery $imageGalery, EntityManagerInterface $entityManager): Response
