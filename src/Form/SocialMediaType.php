@@ -2,19 +2,19 @@
 
 namespace App\Form;
 
-use App\Entity\Partner;
+use App\Entity\SocialMedia;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class PartnerType extends AbstractType
+class SocialMediaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name')
-            ->add('links')
+            ->add('lien')
             ->add('image', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => false, // pas de case à cocher pour supprimer
@@ -23,19 +23,18 @@ class PartnerType extends AbstractType
                 'label' => 'Image (JPG, PNG)',
                 'constraints' => [
                     new \Symfony\Component\Validator\Constraints\Image([
-                        'maxSize' => '5M',
+                        'maxSize' => '10M',
                         'mimeTypes' => ['image/jpeg', 'image/png', 'image/webp'],
                     ])
                 ]
             ]);
-        ;
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Partner::class,
+            'data_class' => SocialMedia::class,
         ]);
     }
 }

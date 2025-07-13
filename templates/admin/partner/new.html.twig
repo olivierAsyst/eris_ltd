@@ -21,14 +21,18 @@
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             {{ form_start(form, {'attr': {'class': 'space-y-6'}}) }}
             
-                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                <div class="grid gap-6 mb-6 md:grid-cols-3">
                     <!-- Name field -->
                     <div>
                         {{ form_label(form.name, 'Nom du partenaire', {'label_attr': {'class': 'block mb-2 text-sm font-medium text-gray-900 dark:text-white'}}) }}
                         {{ form_widget(form.name, {'attr': {'class': 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500', 'placeholder': 'Ex: Entreprise XYZ'}}) }}
                         {{ form_errors(form.name) }}
                     </div>
-                    
+                    <div>
+                        {{ form_label(form.links, 'Liens (site, ou reseau social)', {'label_attr': {'class': 'block mb-2 text-sm font-medium text-gray-900 dark:text-white'}}) }}
+                        {{ form_widget(form.links, {'attr': {'class': 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500', 'placeholder': 'Ex: Entreprise XYZ'}}) }}
+                        {{ form_errors(form.links) }}
+                    </div>
                     <!-- Logo field -->
                     <div>
                         {{ form_label(form.image, 'Logo', {'label_attr': {'class': 'block mb-2 text-sm font-medium text-gray-900 dark:text-white'}}) }}

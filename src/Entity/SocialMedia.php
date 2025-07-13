@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\PartnerRepository;
+use App\Repository\SocialMediaRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-#[ORM\Entity(repositoryClass: PartnerRepository::class)]
+#[ORM\Entity(repositoryClass: SocialMediaRepository::class)]
 #[Vich\Uploadable()]
-class Partner
+class SocialMedia
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,14 +21,14 @@ class Partner
     private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $logo = null;
-
-    #[Vich\UploadableField(mapping: 'partner', fileNameProperty: 'logo')]
-    #[Assert\Image()]
-    private ?File $image = null;
+    private ?string $lien = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $links = null;
+    private ?string $icon = null;
+
+    #[Vich\UploadableField(mapping: 'social', fileNameProperty: 'icon')]
+    #[Assert\Image()]
+    private ?File $image = null;
 
     public function getId(): ?int
     {
@@ -47,18 +47,30 @@ class Partner
         return $this;
     }
 
-    public function getLogo(): ?string
+    public function getLien(): ?string
     {
-        return $this->logo;
+        return $this->lien;
     }
 
-    public function setLogo(?string $logo): static
+    public function setLien(?string $lien): static
     {
-        $this->logo = $logo;
+        $this->lien = $lien;
 
         return $this;
     }
-    public function getImage(): ?File
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(?string $icon): static
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+        public function getImage(): ?File
     {
         return $this->image;
     }
@@ -66,18 +78,6 @@ class Partner
     public function setImage(?File $image): static
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    public function getLinks(): ?string
-    {
-        return $this->links;
-    }
-
-    public function setLinks(?string $links): static
-    {
-        $this->links = $links;
 
         return $this;
     }

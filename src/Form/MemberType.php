@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class MemberType extends AbstractType
 {
@@ -16,7 +17,7 @@ class MemberType extends AbstractType
         $builder
             ->add('fullName')
             ->add('fonction')
-            ->add('image', FileType::class, [
+            ->add('image', VichImageType::class, [
             'required' => false,
             'constraints' => [
                 new Image([
