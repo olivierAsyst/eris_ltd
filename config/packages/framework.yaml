@@ -8,7 +8,8 @@ framework:
         save_path: '%kernel.project_dir%/var/sessions'
         cookie_secure: auto
         cookie_samesite: lax
-    csrf_protection: true
+    csrf_protection:
+        enabled: true
 
     #esi: true
     #fragments: true

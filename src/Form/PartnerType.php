@@ -6,6 +6,7 @@ use App\Entity\Partner;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class PartnerType extends AbstractType
@@ -15,11 +16,8 @@ class PartnerType extends AbstractType
         $builder
             ->add('name')
             ->add('links')
-            ->add('image', VichImageType::class, [
+            ->add('image', VichFileType::class, [
                 'required' => false,
-                'allow_delete' => false, // pas de case à cocher pour supprimer
-                'download_uri' => false, // pas de lien de téléchargement
-                'image_uri' => true, // afficher l'image
                 'label' => 'Image (JPG, PNG)',
                 'constraints' => [
                     new \Symfony\Component\Validator\Constraints\Image([

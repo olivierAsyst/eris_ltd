@@ -78,6 +78,6 @@ final class SocialMediaController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin.social.ndex', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin.social.index', [], Response::HTTP_SEE_OTHER);
     }
 }
